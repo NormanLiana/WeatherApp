@@ -12,6 +12,7 @@
 		A55AB16823523B26004C0B9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55AB16723523B26004C0B9D /* Assets.xcassets */; };
 		A55AB16B23523B26004C0B9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A55AB16923523B26004C0B9D /* LaunchScreen.storyboard */; };
 		A55AB17623523B26004C0B9D /* WeatherApp_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB17523523B26004C0B9D /* WeatherApp_ProjectTests.swift */; };
+		A55AB182235240A6004C0B9D /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB181235240A6004C0B9D /* WeatherVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		A55AB17123523B26004C0B9D /* WeatherApp-ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WeatherApp-ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55AB17523523B26004C0B9D /* WeatherApp_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp_ProjectTests.swift; sourceTree = "<group>"; };
 		A55AB17723523B26004C0B9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A55AB181235240A6004C0B9D /* WeatherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		A55AB15D23523B20004C0B9D /* WeatherApp-Project */ = {
 			isa = PBXGroup;
 			children = (
+				A55AB18023524035004C0B9D /* Controllers */,
 				A55AB15E23523B20004C0B9D /* AppDelegate.swift */,
 				A55AB16023523B20004C0B9D /* SceneDelegate.swift */,
 				A55AB16723523B26004C0B9D /* Assets.xcassets */,
@@ -91,6 +94,14 @@
 				A55AB17723523B26004C0B9D /* Info.plist */,
 			);
 			path = "WeatherApp-ProjectTests";
+			sourceTree = "<group>";
+		};
+		A55AB18023524035004C0B9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A55AB181235240A6004C0B9D /* WeatherVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55AB15F23523B20004C0B9D /* AppDelegate.swift in Sources */,
+				A55AB182235240A6004C0B9D /* WeatherVC.swift in Sources */,
 				A55AB16123523B20004C0B9D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
