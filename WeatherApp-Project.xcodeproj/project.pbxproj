@@ -13,6 +13,7 @@
 		A55AB16B23523B26004C0B9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A55AB16923523B26004C0B9D /* LaunchScreen.storyboard */; };
 		A55AB17623523B26004C0B9D /* WeatherApp_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB17523523B26004C0B9D /* WeatherApp_ProjectTests.swift */; };
 		A55AB182235240A6004C0B9D /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB181235240A6004C0B9D /* WeatherVC.swift */; };
+		A55AB184235242FD004C0B9D /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB183235242FD004C0B9D /* FavoriteVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		A55AB17523523B26004C0B9D /* WeatherApp_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApp_ProjectTests.swift; sourceTree = "<group>"; };
 		A55AB17723523B26004C0B9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A55AB181235240A6004C0B9D /* WeatherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVC.swift; sourceTree = "<group>"; };
+		A55AB183235242FD004C0B9D /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A55AB181235240A6004C0B9D /* WeatherVC.swift */,
+				A55AB183235242FD004C0B9D /* FavoriteVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55AB184235242FD004C0B9D /* FavoriteVC.swift in Sources */,
 				A55AB15F23523B20004C0B9D /* AppDelegate.swift in Sources */,
 				A55AB182235240A6004C0B9D /* WeatherVC.swift in Sources */,
 				A55AB16123523B20004C0B9D /* SceneDelegate.swift in Sources */,
