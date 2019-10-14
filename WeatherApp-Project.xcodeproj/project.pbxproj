@@ -70,6 +70,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A517467423550A770092C15C /* Confidential */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Confidential;
+			sourceTree = "<group>";
+		};
 		A55AB15223523B20004C0B9D = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +98,7 @@
 		A55AB15D23523B20004C0B9D /* WeatherApp-Project */ = {
 			isa = PBXGroup;
 			children = (
+				A517467423550A770092C15C /* Confidential */,
 				A51746712354E45A0092C15C /* Models */,
 				A55AB1852354A8A6004C0B9D /* Views */,
 				A55AB18023524035004C0B9D /* Controllers */,
