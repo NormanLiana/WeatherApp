@@ -79,28 +79,28 @@ class WeatherVC: UIViewController {
 }
 
 // MARK: - Extensions
-//extension WeatherVC: UICollectionViewDelegate {}
-//
-//extension WeatherVC: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if let cell = weatherCV.dequeueReusableCell(withReuseIdentifier: "WeatherCVCell", for: indexPath) as? WeatherCVCell {
-//            cell.dateLabel.text = "Date"
-//            cell.highTempLabel.text = "High temp"
-//            cell.lowTempLabel.text = "Low Temp"
-//            return cell
-//        }
-//        return UICollectionViewCell()
-//    }
-//
-//
-//}
-//
-//extension WeatherVC: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 250, height: 250)
-//    }
-//}
+extension WeatherVC: UICollectionViewDelegate {}
+
+extension WeatherVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = weatherCV.dequeueReusableCell(withReuseIdentifier: "WeatherCVCell", for: indexPath) as? WeatherCVCell {
+            cell.dateLabel.text = "Date"
+            cell.highTempLabel.text = "High temp"
+            cell.lowTempLabel.text = "Low Temp"
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+
+
+}
+
+extension WeatherVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 250, height: 250)
+    }
+}
