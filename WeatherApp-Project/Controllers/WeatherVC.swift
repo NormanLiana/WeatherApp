@@ -23,6 +23,10 @@ class WeatherVC: UIViewController {
         let cv = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 250, height: 250)
+        cv.backgroundColor = .white
+        cv.register(WeatherCVCell.self, forCellWithReuseIdentifier: "WeatherCVCell")
+        cv.dataSource = self
+        cv.delegate = self
         return cv
     }()
     
@@ -75,20 +79,26 @@ class WeatherVC: UIViewController {
 }
 
 // MARK: - Extensions
-extension WeatherVC: UICollectionViewDelegate {}
-
-extension WeatherVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-
-
-}
-
+//extension WeatherVC: UICollectionViewDelegate {}
+//
+//extension WeatherVC: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if let cell = weatherCV.dequeueReusableCell(withReuseIdentifier: "WeatherCVCell", for: indexPath) as? WeatherCVCell {
+//            cell.dateLabel.text = "Date"
+//            cell.highTempLabel.text = "High temp"
+//            cell.lowTempLabel.text = "Low Temp"
+//            return cell
+//        }
+//        return UICollectionViewCell()
+//    }
+//
+//
+//}
+//
 //extension WeatherVC: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: 250, height: 250)

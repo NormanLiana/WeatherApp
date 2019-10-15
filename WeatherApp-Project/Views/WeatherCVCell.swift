@@ -15,7 +15,7 @@ class WeatherCVCell: UICollectionViewCell {
         let lb = UILabel()
         lb.backgroundColor = .white
         lb.textColor = .black
-        lb.text = "Date"
+        lb.textAlignment = .center
         return lb
     }()
     
@@ -23,7 +23,7 @@ class WeatherCVCell: UICollectionViewCell {
         let lb = UILabel()
         lb.backgroundColor = .white
         lb.textColor = .black
-        lb.text = "high temp"
+        lb.textAlignment = .center
         return lb
     }()
     
@@ -31,7 +31,7 @@ class WeatherCVCell: UICollectionViewCell {
         let lb = UILabel()
         lb.backgroundColor = .white
         lb.textColor = .black
-        lb.text = "low temp"
+        lb.textAlignment = .center
         return lb
     }()
     
@@ -43,7 +43,6 @@ class WeatherCVCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addAllSubviews()
         configureDateLabel()
         configureImage()
         configureStackView()
@@ -52,23 +51,19 @@ class WeatherCVCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    private func addAllSubviews() {
-        contentView.addSubview(weatherImage)
-        contentView.addSubview(lowTempLabel)
-        contentView.addSubview(highTempLabel)
-    }
     
     
     // MARK: - Contraint Methods
     private func configureDateLabel() {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(dateLabel)
         
         [dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor), dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor), dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor), dateLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
     }
     
     private func configureImage() {
         weatherImage.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(weatherImage)
 
         [weatherImage.topAnchor.constraint(equalTo: dateLabel.bottomAnchor), weatherImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor), weatherImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor), weatherImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7)].forEach({$0.isActive = true})
     }
@@ -82,6 +77,7 @@ class WeatherCVCell: UICollectionViewCell {
         stackView.axis = .vertical
         stackView.spacing = 0
         stackView.distribution = .fillEqually
+        contentView.addSubview(stackView)
         
         [stackView.topAnchor.constraint(equalTo: weatherImage.bottomAnchor), stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor), stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor), stackView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
 
