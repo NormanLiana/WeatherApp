@@ -11,6 +11,7 @@
 		A51746782355207B0092C15C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51746772355207B0092C15C /* Secret.swift */; };
 		A517467B23565F120092C15C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A517467A23565F120092C15C /* NetworkManager.swift */; };
 		A517467D2356600F0092C15C /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A517467C2356600F0092C15C /* ErrorHandler.swift */; };
+		A517467F2356612C0092C15C /* WeatherAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A517467E2356612C0092C15C /* WeatherAPIClient.swift */; };
 		A55AB15F23523B20004C0B9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB15E23523B20004C0B9D /* AppDelegate.swift */; };
 		A55AB16123523B20004C0B9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB16023523B20004C0B9D /* SceneDelegate.swift */; };
 		A55AB16823523B26004C0B9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55AB16723523B26004C0B9D /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		A51746772355207B0092C15C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		A517467A23565F120092C15C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A517467C2356600F0092C15C /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		A517467E2356612C0092C15C /* WeatherAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPIClient.swift; sourceTree = "<group>"; };
 		A55AB15B23523B20004C0B9D /* WeatherApp-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WeatherApp-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55AB15E23523B20004C0B9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55AB16023523B20004C0B9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				A517467A23565F120092C15C /* NetworkManager.swift */,
 				A517467C2356600F0092C15C /* ErrorHandler.swift */,
+				A517467E2356612C0092C15C /* WeatherAPIClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				A51746782355207B0092C15C /* Secret.swift in Sources */,
 				A55AB184235242FD004C0B9D /* FavoriteVC.swift in Sources */,
 				A55AB15F23523B20004C0B9D /* AppDelegate.swift in Sources */,
+				A517467F2356612C0092C15C /* WeatherAPIClient.swift in Sources */,
 				A517467B23565F120092C15C /* NetworkManager.swift in Sources */,
 				A55AB182235240A6004C0B9D /* WeatherVC.swift in Sources */,
 				A517467D2356600F0092C15C /* ErrorHandler.swift in Sources */,
