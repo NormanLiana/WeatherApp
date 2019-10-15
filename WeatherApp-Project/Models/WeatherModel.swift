@@ -8,6 +8,77 @@
 
 import Foundation
 
+struct WeatherWrapper: Codable {
+    let daily: Weather
+    let timezone: String
+    
+}
+
+struct Weather: Codable {
+    let icon: String
+    let data: [DataWrapper]
+    
+}
+
+struct DataWrapper: Codable {
+    let time: Int
+    let summary: String
+    let temperatureHigh: Double
+    let temperatureLow: Double
+    let sunriseTime: Int
+    let sunsetTime: Int
+    let windSpeed: Double
+    let precipType: String
+}
+
+
+
+
+//    "daily": {
+//        "summary": "No precipitation throughout the week, with high temperatures bottoming out at 61°F on Wednesday.",
+//        "icon": "clear-day",
+//        "data": [
+//            {
+//                "time": 1571036400,
+//                "summary": "Partly cloudy throughout the day.",
+//                "icon": "partly-cloudy-day",
+//                "sunriseTime": 1571062700,
+//                "sunsetTime": 1571103313,
+//                "moonPhase": 0.54,
+//                "precipIntensity": 0.0004,
+//                "precipIntensityMax": 0.0019,
+//                "precipIntensityMaxTime": 1571072400,
+//                "precipProbability": 0.07,
+//                "precipType": "rain",
+//                "temperatureHigh": 65.43,
+//                "temperatureHighTime": 1571090400,
+//                "temperatureLow": 50.4,
+//                "temperatureLowTime": 1571148000,
+//                "apparentTemperatureHigh": 64.76,
+//                "apparentTemperatureHighTime": 1571090400,
+//                "apparentTemperatureLow": 51.05,
+//                "apparentTemperatureLowTime": 1571148000,
+//                "dewPoint": 45.54,
+//                "humidity": 0.65,
+//                "pressure": 1014.4,
+//                "windSpeed": 4.59,
+//                "windGust": 9.08,
+//                "windGustTime": 1571097600,
+//                "windBearing": 241,
+//                "cloudCover": 0.15,
+//                "uvIndex": 5,
+//                "uvIndexTime": 1571083200,
+//                "visibility": 8.995,
+//                "ozone": 306.4,
+//                "temperatureMin": 52.01,
+//                "temperatureMinTime": 1571065200,
+//                "temperatureMax": 65.43,
+//                "temperatureMaxTime": 1571090400,
+//                "apparentTemperatureMin": 52.66,
+//                "apparentTemperatureMinTime": 1571065200,
+//                "apparentTemperatureMax": 64.76,
+//                "apparentTemperatureMaxTime": 1571090400
+//            },
 
 //{
 //    "latitude": 37.8267,
