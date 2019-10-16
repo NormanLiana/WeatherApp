@@ -12,6 +12,16 @@ struct WeatherWrapper: Codable {
     let daily: Weather
     let timezone: String
     
+    static func getWeather(from data: Data) -> [DataWrapper]? {
+        do {
+           let newWeather = try JSONDecoder().decode(WeatherWrapper.self, from: data)
+            return newWeather.daily.data
+        } catch let decodeError {
+           print(decodeError)
+            return nil
+        }
+    }
+    
 }
 
 struct Weather: Codable {
@@ -28,7 +38,11 @@ struct DataWrapper: Codable {
     let sunriseTime: Int
     let sunsetTime: Int
     let windSpeed: Double
-    let precipType: String
+    let precipType: PrecipWrapper?
+}
+
+enum PrecipWrapper: String, Codable {
+    case rain = "rain"
 }
 
 
