@@ -43,7 +43,8 @@ class WeatherVC: UIViewController {
     }()
     
     // MARK: - Properties
-    var weathers =  [DataWrapper]() {
+    var zipcode = String()
+    var weeklyWeather =  [DataWrapper]() {
         didSet {
             weatherCV.reloadData()
         }
@@ -53,7 +54,7 @@ class WeatherVC: UIViewController {
             cityNameLabel.text = "Weather Forecast for \(cityName)"
         }
     }
-    var zipcode = String()
+    
     var latAndLong = String() {
         didSet {
             loadData()
@@ -98,7 +99,7 @@ class WeatherVC: UIViewController {
             case .failure(let error):
                 print(error)
             case .success(let weatherFromOnline):
-                self.weathers = weatherFromOnline
+                self.weeklyWeather = weatherFromOnline
             }
         }
     }
@@ -129,21 +130,29 @@ extension WeatherVC: UICollectionViewDelegate {}
 
 extension WeatherVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weathers.count
+        return weeklyWeather.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = weatherCV.dequeueReusableCell(withReuseIdentifier: "WeatherCVCell", for: indexPath) as? WeatherCVCell {
-            let weather = weathers[indexPath.row]
-            cell.dateLabel.text = weather.getDateFromTime(time: weather.time)
-            cell.highTempLabel.text = String(weather.temperatureHigh)
-            cell.lowTempLabel.text = String(weather.temperatureLow)
-            cell.weatherImage.image = weather.returnPictureBasedOnIcon(icon: weather.icon)
+            let dayWeather = weeklyWeather[indexPath.row]
+            cell.dateLabel.text = dayWeather.getDateFromTime(time: dayWeather.time)
+            cell.highTempLabel.text = String(dayWeather.temperatureHigh)
+            cell.lowTempLabel.text = String(dayWeather.temperatureLow)
+            cell.weatherImage.image = dayWeather.returnPictureBasedOnIcon(icon: dayWeather.icon)
             return cell
         }
         return UICollectionViewCell()
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = WeatherDVC()
+        let selectedDay = weeklyWeather[indexPath.row]
+        detailVC.detailForecast = selectedDay
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
 
 }
 

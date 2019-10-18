@@ -89,6 +89,8 @@ class WeatherDVC: UIViewController {
         return iv
     }()
     
+    // MARK: - Properties
+    var detailForecast: DataWrapper!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -97,10 +99,18 @@ class WeatherDVC: UIViewController {
         configureDateLabel()
         configureImageView()
         configureStackView()
+        setupViews()
     }
     
     //MARK: Private Methods
-
+    private func setupViews() {
+        highTempLabel.text = "High Temp: \(detailForecast.temperatureHigh.description)"
+        lowTempLabel.text = "Low Temp: \(detailForecast.temperatureLow.description)"
+        sunriseLabel.text = "Sunrise: \(detailForecast.sunriseTime.description)"
+        sunsetLabel.text = "Sunset: \(detailForecast.sunsetTime.description)"
+        windspeedLabel.text = "Windspeed: \(detailForecast.windSpeed.description)"
+        weatherDescriptionLabel.text = detailForecast.summary
+    }
     
     // MARK: - Contraint Methods
     private func configureCityNameLabel() {
