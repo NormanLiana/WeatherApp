@@ -13,22 +13,23 @@ class WeatherAPIManager {
     
     static let shared = WeatherAPIManager()
     
-    func getWeather(completionHandler: @escaping (Result<[WeatherWrapper], AppError>) -> () ) {
-        let urlStr = ""
+    func getWeather(latLong: String, completionHandler: @escaping (Result<[DataWrapper], AppError>) -> () ) {
+        let urlStr = "https://api.darksky.net/forecast/\(Secret.weatherAPIKey)/\(latLong)"
         
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badURL))
             return
         }
+        
         NetworkHelper.manager.performDataTask(withUrl: url, andMethod: .get) { (result) in
             switch result {
             case .failure(let error):
                 completionHandler(.failure(error))
             case .success(let data):
                 do {
-                    let weatherInfo = try JSONDecoder().decode([WeatherWrapper].self, from: data)
-                    
-                    completionHandler(.success(weatherInfo))
+                    let weatherInfo = try JSONDecoder().decode(WeatherWrapper.self, from: data)
+
+                    completionHandler(.success(weatherInfo.daily.data))
                 } catch {
                     completionHandler(.failure(.couldNotParseJSON(rawError: error)))
                 }

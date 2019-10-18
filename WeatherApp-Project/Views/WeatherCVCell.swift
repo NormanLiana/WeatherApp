@@ -48,10 +48,6 @@ class WeatherCVCell: UICollectionViewCell {
         configureStackView()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     // MARK: - Contraint Methods
     private func configureDateLabel() {
@@ -83,5 +79,8 @@ class WeatherCVCell: UICollectionViewCell {
 
     }
     
+    required init?(coder: NSCoder) {
+           fatalError("init(coder:) has not been implemented")
+       }
     
 }

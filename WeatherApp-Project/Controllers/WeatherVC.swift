@@ -15,6 +15,8 @@ class WeatherVC: UIViewController {
         let theLabel = UILabel()
         theLabel.backgroundColor = .blue
         theLabel.textColor = .white
+        theLabel.textAlignment = .center
+        theLabel.text = ""
         return theLabel
     }()
     
@@ -35,10 +37,28 @@ class WeatherVC: UIViewController {
         tf.backgroundColor = .red
         tf.textColor = .green
         tf.textAlignment = .center
+        tf.placeholder = "Enter zipcode here and press enter"
+        tf.delegate = self
         return tf
     }()
     
     // MARK: - Properties
+    var weathers =  [DataWrapper]() {
+        didSet {
+            weatherCV.reloadData()
+        }
+    }
+    var cityName = String() {
+        didSet {
+            cityNameLabel.text = "Weather Forecast for \(cityName)"
+        }
+    }
+    var zipcode = String()
+    var latAndLong = String() {
+        didSet {
+            loadData()
+        }
+    }
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -47,6 +67,7 @@ class WeatherVC: UIViewController {
         addSubViews()
         configureWeatherCV()
         configureZipcodeTextField()
+        configureCityNameLabel()
     }
     
     // MARK: - ObjC
@@ -59,11 +80,30 @@ class WeatherVC: UIViewController {
         view.addSubview(zipcodeTextField)
     }
     
-    // MARK: - Contraint Methods
-    private func configureCityNameLabel() {
-        cityNameLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func zipcodeAndCityNameConfigured() {
+        ZipCodeHelper.getLatLong(fromZipCode: zipcode) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let lat, let long, let name):
+                self.latAndLong = "\(lat),\(long)"
+                self.cityName = name
+            }
+        }
     }
     
+    private func loadData() {
+        WeatherAPIManager.shared.getWeather(latLong: latAndLong) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let weatherFromOnline):
+                self.weathers = weatherFromOnline
+            }
+        }
+    }
+    
+    // MARK: - Contraint Methods
     private func configureWeatherCV() {
         weatherCV.translatesAutoresizingMaskIntoConstraints = false
 
@@ -75,6 +115,12 @@ class WeatherVC: UIViewController {
         
         [zipcodeTextField.topAnchor.constraint(equalTo: weatherCV.bottomAnchor), zipcodeTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), zipcodeTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor), zipcodeTextField.heightAnchor.constraint(equalTo: weatherCV.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
     }
+    
+    private func configureCityNameLabel() {
+        cityNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [cityNameLabel.topAnchor.constraint(equalTo: zipcodeTextField.bottomAnchor), cityNameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), cityNameLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor), cityNameLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
+    }
 
 }
 
@@ -83,14 +129,16 @@ extension WeatherVC: UICollectionViewDelegate {}
 
 extension WeatherVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return weathers.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = weatherCV.dequeueReusableCell(withReuseIdentifier: "WeatherCVCell", for: indexPath) as? WeatherCVCell {
-            cell.dateLabel.text = "Date"
-            cell.highTempLabel.text = "High temp"
-            cell.lowTempLabel.text = "Low Temp"
+            let weather = weathers[indexPath.row]
+            cell.dateLabel.text = weather.getDateFromTime(time: weather.time)
+            cell.highTempLabel.text = String(weather.temperatureHigh)
+            cell.lowTempLabel.text = String(weather.temperatureLow)
+            cell.weatherImage.image = weather.returnPictureBasedOnIcon(icon: weather.icon)
             return cell
         }
         return UICollectionViewCell()
@@ -104,3 +152,13 @@ extension WeatherVC: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 250, height: 250)
     }
 }
+
+extension WeatherVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.zipcode = textField.text ?? ""
+        zipcodeAndCityNameConfigured()
+        return true
+    }
+}
+
