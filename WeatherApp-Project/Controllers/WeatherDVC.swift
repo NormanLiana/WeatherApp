@@ -89,6 +89,11 @@ class WeatherDVC: UIViewController {
         return iv
     }()
     
+    lazy var savePictureToFavesButton: UIBarButtonItem = {
+        let butt = UIBarButtonItem(title: "Save Photo", style: UIBarButtonItem.Style.plain, target: self, action: #selector(savePhotoButtonPressed))
+       return butt
+    }()
+    
     // MARK: - Properties
     var detailForecast: DataWrapper!
     var detailCityName: String!
@@ -97,11 +102,17 @@ class WeatherDVC: UIViewController {
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = savePictureToFavesButton
         configureCityNameLabel()
         configureDateLabel()
         configureImageView()
         configureStackView()
         setupViews()
+    }
+    
+    // MARK: - ObjC
+    @objc func savePhotoButtonPressed() {
+        
     }
     
     //MARK: Private Methods
@@ -111,7 +122,7 @@ class WeatherDVC: UIViewController {
         highTempLabel.text = "High Temp: \(detailForecast.temperatureHigh.description)"
         lowTempLabel.text = "Low Temp: \(detailForecast.temperatureLow.description)"
         sunriseLabel.text = "Sunrise: \(detailForecast.sunriseTime.description)"
-        sunsetLabel.text = "Sunset: \(detailForecast.sunsetTime.description)"
+//        sunsetLabel.text = "Sunset: \(detailForecast.formatDate(time: detailForecast.sunsetTime))"
         windspeedLabel.text = "Windspeed: \(detailForecast.windSpeed.description)"
         weatherDescriptionLabel.text = detailForecast.summary
         loadPictureData()

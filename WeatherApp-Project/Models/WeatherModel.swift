@@ -43,14 +43,25 @@ struct DataWrapper: Codable {
     
     
   
-    func formatDate(time:Int) -> String {
-        let date = NSDate(timeIntervalSince1970: TimeInterval(time))
+    func formatDate(time: Int) -> String {
+        let timeInterval = NSDate(timeIntervalSince1970: TimeInterval(time))
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
         dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
-        let testDate = dateFormatter.string(from: date as Date)
+        let testDate = dateFormatter.string(from: timeInterval as Date)
         return testDate.components(separatedBy: " at")[0]
     }
+    
+    
+    // TODO: - Format Sunrise and Sunset Time
+//    func formatTime(time: Int) -> String {
+//        let time = NSDate(timeIntervalSince1970: TimeInterval(time))
+//        let timeFormatter = DateFormatter()
+//        timeFormatter.timeStyle = .medium
+//
+//    }
+    
+    
     
     func returnPictureBasedOnIcon(icon:String) -> UIImage {
         switch icon {
