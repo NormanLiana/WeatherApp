@@ -11,10 +11,16 @@ import Foundation
 class PictureAPIManager {
     private init() {}
     
+    // MARK: - Singleton
     static let shared = PictureAPIManager()
     
-    func getPictures(cityName: String, completionHandler: @escaping (Result<[Picture], AppError>) -> () ) {
-        let urlStr = "https://pixabay.com/api/?key=\(Secret.picAPIKey)&q=\(cityName)&page=1&per_page=5"
+    // MARK: Methods
+    func formatCityNameForURL(cityName: String) -> String {
+        let format = cityName.replacingOccurrences(of: " ", with: "+")
+        return "https://pixabay.com/api/?key=\(Secret.picAPIKey)&q=\(format)&page=1&per_page=5"
+    }
+    
+    func getPictures(urlStr: String, completionHandler: @escaping (Result<[Picture], AppError>) -> () ) {
         
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badURL))

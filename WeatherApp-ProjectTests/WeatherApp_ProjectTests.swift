@@ -63,4 +63,6 @@ class WeatherApp_ProjectTests: XCTestCase {
         XCTAssertTrue(pictures.count > 0, "No pictures were loaded")
     }
     
+    
+    
 }
