@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct PictureWrapper: Codable {
     let hits: [Picture]
@@ -27,6 +28,12 @@ struct PictureWrapper: Codable {
 struct Picture: Codable {
     let largeImageURL: String
     
-   
+   static func getOnePictureForDVC(pictures: [Picture]) -> Picture? {
+    if let onePic = pictures.randomElement() {
+        return onePic
+    }
+    return nil
+ }
+
     
 }
