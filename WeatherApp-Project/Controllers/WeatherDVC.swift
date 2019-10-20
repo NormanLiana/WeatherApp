@@ -112,7 +112,7 @@ class WeatherDVC: UIViewController {
     
     // MARK: - ObjC
     @objc func savePhotoButtonPressed() {
-        
+        try? PicturePersistHelper.manager.savePhoto(newPhoto: loadedPicture)
     }
     
     //MARK: Private Methods

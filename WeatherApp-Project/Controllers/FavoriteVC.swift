@@ -20,7 +20,7 @@ class FavoriteVC: UIViewController {
     }()
     
     // MARK: - Properties
-    var favorites: Picture! {
+    var favorites: [Picture]! {
         didSet {
             favoriteTV.reloadData()
         }
@@ -31,6 +31,19 @@ class FavoriteVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadSavedPictures()
+    }
+    
+    // MARK: Private Methods
+    private func loadSavedPictures() {
+        do {
+            favorites = try PicturePersistHelper.manager.getPhoto()
+        } catch {
+            print(error)
+        }
     }
     
     // MARK: - Contraint Methods
@@ -47,12 +60,24 @@ class FavoriteVC: UIViewController {
 // MARK: - Extensions
 extension FavoriteVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return favorites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = favoriteTV.dequeueReusableCell(withIdentifier: "FavoriteTVCell", for: indexPath) as? FavoriteTVCell {
-            cell.cityImageView.backgroundColor = .green
+            let favorite = favorites[indexPath.row]
+            let urlString = favorite.largeImageURL
+//
+            ImageHelper.shared.getImage(urlStr: urlString) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .failure(let error):
+                        print(error)
+                    case .success(let imageFromOnline):
+                        cell.cityImageView.image = imageFromOnline
+                    }
+                }
+            }
             return cell
         }
         return UITableViewCell()
