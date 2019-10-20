@@ -43,7 +43,7 @@ struct DataWrapper: Codable {
     
     
   
-    func getDateFromTime(time:Int) -> String {
+    func formatDate(time:Int) -> String {
         let date = NSDate(timeIntervalSince1970: TimeInterval(time))
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style

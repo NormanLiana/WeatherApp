@@ -107,7 +107,7 @@ class WeatherDVC: UIViewController {
     //MARK: Private Methods
     private func setupViews() {
         cityNameLabel.text = "Weather Forecast for \(detailCityName!)"
-        dateLabel.text = "Date: \(detailForecast.getDateFromTime(time: detailForecast.time))"
+        dateLabel.text = "Date: \(detailForecast.formatDate(time: detailForecast.time))"
         highTempLabel.text = "High Temp: \(detailForecast.temperatureHigh.description)"
         lowTempLabel.text = "Low Temp: \(detailForecast.temperatureLow.description)"
         sunriseLabel.text = "Sunrise: \(detailForecast.sunriseTime.description)"

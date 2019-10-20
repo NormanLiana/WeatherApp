@@ -136,7 +136,7 @@ extension WeatherVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = weatherCV.dequeueReusableCell(withReuseIdentifier: "WeatherCVCell", for: indexPath) as? WeatherCVCell {
             let dayWeather = weeklyWeather[indexPath.row]
-            cell.dateLabel.text = dayWeather.getDateFromTime(time: dayWeather.time)
+            cell.dateLabel.text = dayWeather.formatDate(time: dayWeather.time)
             cell.highTempLabel.text = String(dayWeather.temperatureHigh)
             cell.lowTempLabel.text = String(dayWeather.temperatureLow)
             cell.weatherImage.image = dayWeather.returnPictureBasedOnIcon(icon: dayWeather.icon)
