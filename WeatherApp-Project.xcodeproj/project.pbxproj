@@ -10,7 +10,7 @@
 		A50D7B36235BC3D1007AE256 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51746722354E4790092C15C /* WeatherModel.swift */; };
 		A50D7B38235BCAE5007AE256 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50D7B37235BCAE5007AE256 /* ImageHelper.swift */; };
 		A50D7B3B235C9CA0007AE256 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50D7B3A235C9CA0007AE256 /* UserDefaultsWrapper.swift */; };
-		A50D7B3D235C9CBA007AE256 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50D7B3C235C9CBA007AE256 /* FileManager.swift */; };
+		A50D7B3D235C9CBA007AE256 /* PicturePersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50D7B3C235C9CBA007AE256 /* PicturePersistenceHelper.swift */; };
 		A51746732354E47A0092C15C /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51746722354E4790092C15C /* WeatherModel.swift */; };
 		A51746782355207B0092C15C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51746772355207B0092C15C /* Secret.swift */; };
 		A517467B23565F120092C15C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A517467A23565F120092C15C /* NetworkManager.swift */; };
@@ -36,6 +36,7 @@
 		A55AB182235240A6004C0B9D /* WeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB181235240A6004C0B9D /* WeatherVC.swift */; };
 		A55AB184235242FD004C0B9D /* FavoriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB183235242FD004C0B9D /* FavoriteVC.swift */; };
 		A55AB1872354A8E5004C0B9D /* WeatherCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55AB1862354A8E5004C0B9D /* WeatherCVCell.swift */; };
+		A5DC9507235CB0B300BF10EA /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DC9506235CB0B300BF10EA /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,7 @@
 /* Begin PBXFileReference section */
 		A50D7B37235BCAE5007AE256 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		A50D7B3A235C9CA0007AE256 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
-		A50D7B3C235C9CBA007AE256 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		A50D7B3C235C9CBA007AE256 /* PicturePersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePersistenceHelper.swift; sourceTree = "<group>"; };
 		A51746722354E4790092C15C /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		A51746772355207B0092C15C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		A517467A23565F120092C15C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		A55AB181235240A6004C0B9D /* WeatherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherVC.swift; sourceTree = "<group>"; };
 		A55AB183235242FD004C0B9D /* FavoriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVC.swift; sourceTree = "<group>"; };
 		A55AB1862354A8E5004C0B9D /* WeatherCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCVCell.swift; sourceTree = "<group>"; };
+		A5DC9506235CB0B300BF10EA /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				A50D7B3A235C9CA0007AE256 /* UserDefaultsWrapper.swift */,
-				A50D7B3C235C9CBA007AE256 /* FileManager.swift */,
+				A50D7B3C235C9CBA007AE256 /* PicturePersistenceHelper.swift */,
+				A5DC9506235CB0B300BF10EA /* PersistenceManager.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -328,7 +331,8 @@
 				A51746862357B03B0092C15C /* WeatherDVC.swift in Sources */,
 				A517467D2356600F0092C15C /* ErrorHandler.swift in Sources */,
 				A51746732354E47A0092C15C /* WeatherModel.swift in Sources */,
-				A50D7B3D235C9CBA007AE256 /* FileManager.swift in Sources */,
+				A50D7B3D235C9CBA007AE256 /* PicturePersistenceHelper.swift in Sources */,
+				A5DC9507235CB0B300BF10EA /* PersistenceManager.swift in Sources */,
 				A55AB16123523B20004C0B9D /* SceneDelegate.swift in Sources */,
 				A50D7B38235BCAE5007AE256 /* ImageHelper.swift in Sources */,
 			);

@@ -19,6 +19,13 @@ class FavoriteVC: UIViewController {
         return tv
     }()
     
+    // MARK: - Properties
+    var favorites: Picture! {
+        didSet {
+            favoriteTV.reloadData()
+        }
+    }
+    
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -44,6 +51,10 @@ extension FavoriteVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = favoriteTV.dequeueReusableCell(withIdentifier: "FavoriteTVCell", for: indexPath) as? FavoriteTVCell {
+            cell.cityImageView.backgroundColor = .green
+            return cell
+        }
         return UITableViewCell()
     }
     

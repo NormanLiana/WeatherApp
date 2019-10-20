@@ -26,11 +26,13 @@ class FavoriteTVCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     // MARK: - Contraint Methods
     private func configureImageView() {
         cityImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+
         [cityImageView.topAnchor.constraint(equalTo: contentView.topAnchor), cityImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor), cityImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor), cityImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)].forEach({$0.isActive = true})
     }
+    
 }
