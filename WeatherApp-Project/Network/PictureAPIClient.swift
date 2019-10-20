@@ -17,7 +17,7 @@ class PictureAPIManager {
     // MARK: Methods
     func formatCityNameForURL(cityName: String) -> String {
         let format = cityName.replacingOccurrences(of: " ", with: "+")
-        return "https://pixabay.com/api/?key=\(Secret.picAPIKey)&q=\(format)&page=1&per_page=5"
+        return "https://pixabay.com/api/?key=\(Secret.picAPIKey)&q=\(format)"
     }
     
     func getPictures(urlStr: String, completionHandler: @escaping (Result<[Picture], AppError>) -> () ) {
