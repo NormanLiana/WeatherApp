@@ -69,9 +69,8 @@ class WeatherVC: UIViewController {
         configureWeatherCV()
         configureZipcodeTextField()
         configureCityNameLabel()
+        zipcodeTextField.text = UserDefaultsWrapper.standard.getZipcode()
     }
-    
-    // MARK: - ObjC
     
     
     // MARK: - Private Methods
@@ -168,6 +167,7 @@ extension WeatherVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.zipcode = textField.text ?? ""
         zipcodeAndCityNameConfigured()
+        UserDefaultsWrapper.standard.setZipcode(zipcode: textField.text ?? "")
         return true
     }
 }
