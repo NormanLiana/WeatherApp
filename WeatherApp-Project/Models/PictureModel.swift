@@ -8,14 +8,12 @@
 
 import Foundation
 
-struct Pictures: Codable {
-    let totalHits: Int
-    let hits: [Hit]
-    let total: Int
+struct PictureWrapper: Codable {
+    let hits: [Picture]
     
-    static func decodePictures(from data: Data) -> [Hit]? {
+    static func decodePictures(from data: Data) -> [Picture]? {
         do {
-           let newPics = try JSONDecoder().decode(Pictures.self, from: data)
+           let newPics = try JSONDecoder().decode(PictureWrapper.self, from: data)
             return newPics.hits
         } catch let decodeError {
            print(decodeError)
@@ -26,11 +24,9 @@ struct Pictures: Codable {
 }
 
 
-struct Hit: Codable {
+struct Picture: Codable {
     let largeImageURL: String
-    let pageURL: String
-    let webformatURL: String
-    let userImageURL, previewURL: String
-
+    
+   
     
 }

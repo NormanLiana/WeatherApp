@@ -13,7 +13,7 @@ class PictureAPIManager {
     
     static let shared = PictureAPIManager()
     
-    func getPictures(cityName: String, completionHandler: @escaping (Result<[Hit], AppError>) -> () ) {
+    func getPictures(cityName: String, completionHandler: @escaping (Result<[Picture], AppError>) -> () ) {
         let urlStr = "https://pixabay.com/api/?key=\(Secret.picAPIKey)&q=\(cityName)&page=1&per_page=5"
         
         guard let url = URL(string: urlStr) else {
@@ -27,7 +27,7 @@ class PictureAPIManager {
                 completionHandler(.failure(error))
             case .success(let data):
                 do {
-                    let picInfo = try JSONDecoder().decode(Pictures.self, from: data)
+                    let picInfo = try JSONDecoder().decode(PictureWrapper.self, from: data)
 
                     completionHandler(.success(picInfo.hits))
                 } catch {
