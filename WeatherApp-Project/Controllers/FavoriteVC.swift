@@ -19,6 +19,12 @@ class FavoriteVC: UIViewController {
         return tv
     }()
     
+    lazy var faveImageView: UIImageView = {
+       let vw = UIImageView()
+        vw.backgroundColor = .green
+        return vw
+    }()
+    
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
