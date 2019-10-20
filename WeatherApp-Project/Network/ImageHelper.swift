@@ -17,7 +17,7 @@ class ImageHelper {
     static let shared = ImageHelper()
     
     // MARK: - Internal Methods
-    func getImage(urlStr: String, cityName: String, completionHandler: @escaping (Result<UIImage,AppError>) -> ()) {
+    func getImage(urlStr: String, completionHandler: @escaping (Result<UIImage,AppError>) -> ()) {
         
         
         

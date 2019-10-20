@@ -92,6 +92,7 @@ class WeatherDVC: UIViewController {
     // MARK: - Properties
     var detailForecast: DataWrapper!
     var detailCityName: String!
+    var loadedPicture: Picture!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -113,11 +114,43 @@ class WeatherDVC: UIViewController {
         sunsetLabel.text = "Sunset: \(detailForecast.sunsetTime.description)"
         windspeedLabel.text = "Windspeed: \(detailForecast.windSpeed.description)"
         weatherDescriptionLabel.text = detailForecast.summary
+        loadPictureData()
     }
     
-    private func loadImage() {
+    private func convertPictureFromData(onePic: Picture) {
+        let urlString = onePic.largeImageURL
         
+        ImageHelper.shared.getImage(urlStr: urlString) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let pictureFromData):
+                    self.cityImageView.image = pictureFromData
+                }
+            }
+        }
     }
+    
+    private func loadPictureData() {
+        let formattedString = PictureAPIManager.shared.formatCityNameForURL(cityName: detailCityName)
+        
+        PictureAPIManager.shared.getPictures(urlStr: formattedString) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let imagesFromOnline):
+                    if let onePic = Picture.getOnePictureForDVC(pictures: imagesFromOnline) {
+                        self.convertPictureFromData(onePic: onePic)
+                        self.loadedPicture = onePic
+                    }
+                }
+            }
+        }
+    }
+    
+    
     
     // MARK: - Contraint Methods
     private func configureCityNameLabel() {

@@ -40,6 +40,8 @@ struct DataWrapper: Codable {
     let sunriseTime: Int
     let sunsetTime: Int
     let windSpeed: Double
+    
+    
   
     func getDateFromTime(time:Int) -> String {
         let date = NSDate(timeIntervalSince1970: TimeInterval(time))
