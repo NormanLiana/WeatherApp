@@ -149,6 +149,7 @@ extension WeatherVC: UICollectionViewDataSource {
         let detailVC = WeatherDVC()
         let selectedDay = weeklyWeather[indexPath.row]
         detailVC.detailForecast = selectedDay
+        detailVC.detailCityName = cityName
         
         self.navigationController?.pushViewController(detailVC, animated: true)
         

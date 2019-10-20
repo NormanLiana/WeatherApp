@@ -91,6 +91,7 @@ class WeatherDVC: UIViewController {
     
     // MARK: - Properties
     var detailForecast: DataWrapper!
+    var detailCityName: String!
     
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -104,6 +105,8 @@ class WeatherDVC: UIViewController {
     
     //MARK: Private Methods
     private func setupViews() {
+        cityNameLabel.text = "Weather Forecast for \(detailCityName!)"
+        dateLabel.text = "Date: \(detailForecast.getDateFromTime(time: detailForecast.time))"
         highTempLabel.text = "High Temp: \(detailForecast.temperatureHigh.description)"
         lowTempLabel.text = "Low Temp: \(detailForecast.temperatureLow.description)"
         sunriseLabel.text = "Sunrise: \(detailForecast.sunriseTime.description)"
@@ -112,26 +115,30 @@ class WeatherDVC: UIViewController {
         weatherDescriptionLabel.text = detailForecast.summary
     }
     
+    private func loadImage() {
+        
+    }
+    
     // MARK: - Contraint Methods
     private func configureCityNameLabel() {
         cityNameLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(cityNameLabel)
         
-        [cityNameLabel.topAnchor.constraint(equalTo: view.topAnchor), cityNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), cityNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), cityNameLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
+        [cityNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), cityNameLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), cityNameLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor), cityNameLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
     }
     
     private func configureDateLabel() {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(dateLabel)
         
-        [dateLabel.topAnchor.constraint(equalTo: cityNameLabel.bottomAnchor), dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), dateLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
+        [dateLabel.topAnchor.constraint(equalTo: cityNameLabel.bottomAnchor), dateLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), dateLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor), dateLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1)].forEach({$0.isActive = true})
     }
     
     private func configureImageView() {
         cityImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(cityImageView)
         
-        [cityImageView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor), cityImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor), cityImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor), cityImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
+        [cityImageView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor), cityImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), cityImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor), cityImageView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
     }
     
     private func configureStackView() {
@@ -143,7 +150,7 @@ class WeatherDVC: UIViewController {
         stackView.distribution = .fillEqually
         view.addSubview(stackView)
         
-        [stackView.topAnchor.constraint(equalTo: cityImageView.bottomAnchor), stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor), stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor), stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)].forEach({$0.isActive = true})
+        [stackView.topAnchor.constraint(equalTo: cityImageView.bottomAnchor), stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor), stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor), stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
     }
 
 }
