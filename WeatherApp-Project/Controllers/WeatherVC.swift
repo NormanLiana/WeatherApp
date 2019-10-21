@@ -94,11 +94,13 @@ class WeatherVC: UIViewController {
     
     private func loadData() {
         WeatherAPIManager.shared.getWeather(latLong: latAndLong) { (result) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let weatherFromOnline):
-                self.weeklyWeather = weatherFromOnline
+            DispatchQueue.main.async {
+                switch result {
+               case .failure(let error):
+                    print(error)
+                case .success(let weatherFromOnline):
+                    self.weeklyWeather = weatherFromOnline
+                }
             }
         }
     }
